@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ac7aa9cb9d8e440481f4631633130a67" Name="Diagram1">
+        <EntityTypeShape EntityType="delivery_of_term_papers_by_studentsModel.Discipline" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="delivery_of_term_papers_by_studentsModel.Groups" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="delivery_of_term_papers_by_studentsModel.List" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="delivery_of_term_papers_by_studentsModel.Semester" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="delivery_of_term_papers_by_studentsModel.Specialties" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="delivery_of_term_papers_by_studentsModel.Students" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="delivery_of_term_papers_by_studentsModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="delivery_of_term_papers_by_studentsModel.Theme" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="delivery_of_term_papers_by_studentsModel.Users" Width="1.5" PointX="7.75" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="delivery_of_term_papers_by_studentsModel.fk_Theme_Discipline" ManuallyRouted="false" />
+        <AssociationConnector Association="delivery_of_term_papers_by_studentsModel.fk_ID_St_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="delivery_of_term_papers_by_studentsModel.fk_Speciality" ManuallyRouted="false" />
+        <AssociationConnector Association="delivery_of_term_papers_by_studentsModel.fk_Half_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="delivery_of_term_papers_by_studentsModel.fk_List_Theme" ManuallyRouted="false" />
+        <AssociationConnector Association="delivery_of_term_papers_by_studentsModel.fk_Student_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="delivery_of_term_papers_by_studentsModel.Group_Discipline" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

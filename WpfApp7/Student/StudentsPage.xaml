@@ -1,0 +1,30 @@
+﻿<Page x:Class="WpfApp7.Student.StudentsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StudentsPage" Background="White" IsVisibleChanged="Page_IsVisiblePage">
+
+    <Grid>
+        <ComboBox Name="ComboGroup" Width="150" Height="20" Margin="0 0 0 450" DisplayMemberPath="Name_Group" SelectionChanged="ComboGroup_OnSelectionChanged"/>
+        <Label Content="Выберите группу" Height="30" Width="120" Margin="0 0 0 400"/>
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="DataGridStudents" Grid.Column="0" Margin="0,66,0,79" Grid.Row="0" SelectedItem="{Binding SelectedItem}" Width="800">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding St_ID_Card}" Header="Номер студенческого" MinWidth="80" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Groups.Name_Group}" Header="Группа студента" MinWidth="70" Width="*" x:Name="GroupsSt"/>
+                <DataGridTextColumn Binding="{Binding St_Surname}" Header="Фамилия" MinWidth="80" Width="*"/>
+                <DataGridTextColumn Binding="{Binding St_Name}" Header="Имя" MinWidth="80" Width="*"/>
+                <DataGridTextColumn Binding="{Binding St_Patronymic}" Header="Отчество" MinWidth="80" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="30" Margin="79,440,0,28" Width="632">
+            <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click" Grid.Column="1" Grid.Row="1" MaxHeight="30" MinHeight="30" MinWidth="100" MaxWidth="100" Margin="0 0 10 0"/>
+            <Button x:Name="DeleteButton" Content="Удалить" Click="deleteButton_Click" Grid.Column="1" Grid.Row="1" MaxHeight="30" MinHeight="30" MinWidth="100" MaxWidth="100" Margin="0 0 10 0"/>
+            <Button x:Name="EditButton" Content="Редактировать" Click="BtnEdit" MaxHeight="30" MinHeight="30" MaxWidth="100" MinWidth="100" Margin="0 0 10 0"/>
+            <Button x:Name="SearchBtn" Content="Поиск" Click="BtnSearch" MaxHeight="30" MinHeight="30" MaxWidth="100" MinWidth="100" Margin="0 0 10 0"/>
+            <Button x:Name="GoGroupEdit" Content="Перейти к редактированию групп" MaxHeight="30" MinHeight="30" MaxWidth="200" MinWidth="100" Click="GoGroupEdit_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

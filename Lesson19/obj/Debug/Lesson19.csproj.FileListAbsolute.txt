@@ -1,0 +1,13 @@
+C:\Users\Валерий\source\repos\WpfApp7\Lesson19\bin\Debug\Lesson19.exe.config
+C:\Users\Валерий\source\repos\WpfApp7\Lesson19\bin\Debug\Lesson19.exe
+C:\Users\Валерий\source\repos\WpfApp7\Lesson19\bin\Debug\Lesson19.pdb
+C:\Users\Валерий\source\repos\WpfApp7\Lesson19\bin\Debug\EntityFramework.dll
+C:\Users\Валерий\source\repos\WpfApp7\Lesson19\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Валерий\source\repos\WpfApp7\Lesson19\bin\Debug\EntityFramework.xml
+C:\Users\Валерий\source\repos\WpfApp7\Lesson19\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Валерий\source\repos\WpfApp7\Lesson19\obj\Debug\Lesson19.csproj.AssemblyReference.cache
+C:\Users\Валерий\source\repos\WpfApp7\Lesson19\obj\Debug\Lesson19.csproj.SuggestedBindingRedirects.cache
+C:\Users\Валерий\source\repos\WpfApp7\Lesson19\obj\Debug\Lesson19.csproj.CoreCompileInputs.cache
+C:\Users\Валерий\source\repos\WpfApp7\Lesson19\obj\Debug\Lesson19.csproj.CopyComplete
+C:\Users\Валерий\source\repos\WpfApp7\Lesson19\obj\Debug\Lesson19.exe
+C:\Users\Валерий\source\repos\WpfApp7\Lesson19\obj\Debug\Lesson19.pdb

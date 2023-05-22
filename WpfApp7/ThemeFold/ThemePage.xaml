@@ -1,0 +1,25 @@
+﻿<Page x:Class="WpfApp7.ThemeFold.ThemePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ThemePage" MinHeight="550" MinWidth="800" Background="White" IsVisibleChanged="IsVisiblePage">
+
+    <Grid>
+        <ComboBox Name="ComboDiscip" Width="150" Height="20" Margin="0 0 0 500" DisplayMemberPath="Name_Discipline" SelectionChanged="ComboDiscip_OnSelectionChanged"/>
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="DataGridTheme" Margin="85,40,114,153">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name_Theme}" Header="Название темы" MinWidth="130" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Discipline.Name_Discipline}" Header="Название дисциплины" MinWidth="100" Width="*" x:Name="DisciplineName"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Margin="-14,397,14,75" Orientation="Horizontal" HorizontalAlignment="Center" Height="40">
+            <Button Content="Добавить тему" Name="AddTheme" Click="AddTheme_Click" Margin="0 0 10 0" Width="100"/>
+            <Button Content="Удалить тему" Name="BtnDel" Click="BtnDel_Click" Margin="0 0 10 0" Width="100"/>
+            <Button Content="Редактировать тему" Name="BtnEdit" Click="BtnEdit_Click" Margin="0 0 10 0" Width="130"/>
+            <Button Content="Поиск темы" Name="BtnSearch" Click="BtnSearch_Click" Width="100"/>
+        </StackPanel>
+    </Grid>
+</Page>

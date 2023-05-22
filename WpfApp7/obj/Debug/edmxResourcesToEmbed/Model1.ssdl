@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище delivery_of_term_papers_by_studentsModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Discipline">
+    <Key>
+      <PropertyRef Name="ID_Disciplines" />
+    </Key>
+    <Property Name="ID_Disciplines" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Discipline" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Group_Discipline">
+    <Key>
+      <PropertyRef Name="ID_Discipline" />
+      <PropertyRef Name="ID_Group" />
+    </Key>
+    <Property Name="ID_Discipline" Type="int" Nullable="false" />
+    <Property Name="ID_Group" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="ID_Groups" />
+    </Key>
+    <Property Name="ID_Groups" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Group" Type="varchar" MaxLength="150" />
+    <Property Name="Speciality" Type="int" />
+  </EntityType>
+  <EntityType Name="List">
+    <Key>
+      <PropertyRef Name="ID_List" />
+    </Key>
+    <Property Name="ID_List" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Theme" Type="int" />
+    <Property Name="Grade" Type="int" />
+    <Property Name="Readiness_Degree" Type="int" />
+    <Property Name="Student_ID" Type="int" />
+    <Property Name="Work_submition_date" Type="date" />
+    <Property Name="Half_Year" Type="int" />
+    <Property Name="ID_Disciline" Type="int" />
+  </EntityType>
+  <EntityType Name="Semester">
+    <Key>
+      <PropertyRef Name="ID_Semester" />
+    </Key>
+    <Property Name="ID_Semester" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Semester_Year" Type="date" />
+  </EntityType>
+  <EntityType Name="Specialties">
+    <Key>
+      <PropertyRef Name="ID_Specialties" />
+    </Key>
+    <Property Name="ID_Specialties" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Specialties" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="ID_Student" />
+    </Key>
+    <Property Name="ID_Student" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="St_ID_Card" Type="int" Nullable="false" />
+    <Property Name="ID_St_Group" Type="int" />
+    <Property Name="St_Surname" Type="varchar" MaxLength="50" />
+    <Property Name="St_Name" Type="varchar" MaxLength="50" />
+    <Property Name="St_Patronymic" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Theme">
+    <Key>
+      <PropertyRef Name="ID_Theme" />
+      <PropertyRef Name="Theme_Discipline" />
+    </Key>
+    <Property Name="ID_Theme" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Theme_Discipline" Type="int" Nullable="false" />
+    <Property Name="Name_Theme" Type="varchar" MaxLength="150" />
+    <Property Name="ID_Selected_Theme" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id_User" />
+    </Key>
+    <Property Name="Id_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login_User" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Patronymic" Type="varchar" MaxLength="150" />
+    <Property Name="passwordHash" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="fk_Half_Year">
+    <End Role="Semester" Type="Self.Semester" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="List" Type="Self.List" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Semester">
+        <PropertyRef Name="ID_Semester" />
+      </Principal>
+      <Dependent Role="List">
+        <PropertyRef Name="Half_Year" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ID_Discipline">
+    <End Role="Discipline" Type="Self.Discipline" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Group_Discipline" Type="Self.Group_Discipline" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Discipline">
+        <PropertyRef Name="ID_Disciplines" />
+      </Principal>
+      <Dependent Role="Group_Discipline">
+        <PropertyRef Name="ID_Discipline" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ID_Group">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Group_Discipline" Type="Self.Group_Discipline" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="ID_Groups" />
+      </Principal>
+      <Dependent Role="Group_Discipline">
+        <PropertyRef Name="ID_Group" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ID_St_Group">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Students" Type="Self.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="ID_Groups" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="ID_St_Group" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_List_Theme">
+    <End Role="Theme" Type="Self.Theme" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="List" Type="Self.List" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Theme">
+        <PropertyRef Name="ID_Theme" />
+        <PropertyRef Name="Theme_Discipline" />
+      </Principal>
+      <Dependent Role="List">
+        <PropertyRef Name="ID_Theme" />
+        <PropertyRef Name="ID_Disciline" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Speciality">
+    <End Role="Specialties" Type="Self.Specialties" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Specialties">
+        <PropertyRef Name="ID_Specialties" />
+      </Principal>
+      <Dependent Role="Groups">
+        <PropertyRef Name="Speciality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Student_ID">
+    <End Role="Students" Type="Self.Students" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="List" Type="Self.List" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="ID_Student" />
+      </Principal>
+      <Dependent Role="List">
+        <PropertyRef Name="Student_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Theme_Discipline">
+    <End Role="Discipline" Type="Self.Discipline" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Theme" Type="Self.Theme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Discipline">
+        <PropertyRef Name="ID_Disciplines" />
+      </Principal>
+      <Dependent Role="Theme">
+        <PropertyRef Name="Theme_Discipline" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище delivery_of_term_papers_by_studentsModelContainer">
+    <EntitySet Name="Discipline" EntityType="Self.Discipline" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Group_Discipline" EntityType="Self.Group_Discipline" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="List" EntityType="Self.List" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Semester" EntityType="Self.Semester" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Specialties" EntityType="Self.Specialties" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Theme" EntityType="Self.Theme" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_Half_Year" Association="Self.fk_Half_Year">
+      <End Role="Semester" EntitySet="Semester" />
+      <End Role="List" EntitySet="List" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ID_Discipline" Association="Self.fk_ID_Discipline">
+      <End Role="Discipline" EntitySet="Discipline" />
+      <End Role="Group_Discipline" EntitySet="Group_Discipline" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ID_Group" Association="Self.fk_ID_Group">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="Group_Discipline" EntitySet="Group_Discipline" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ID_St_Group" Association="Self.fk_ID_St_Group">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="fk_List_Theme" Association="Self.fk_List_Theme">
+      <End Role="Theme" EntitySet="Theme" />
+      <End Role="List" EntitySet="List" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Speciality" Association="Self.fk_Speciality">
+      <End Role="Specialties" EntitySet="Specialties" />
+      <End Role="Groups" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Student_ID" Association="Self.fk_Student_ID">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="List" EntitySet="List" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Theme_Discipline" Association="Self.fk_Theme_Discipline">
+      <End Role="Discipline" EntitySet="Discipline" />
+      <End Role="Theme" EntitySet="Theme" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

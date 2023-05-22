@@ -1,0 +1,72 @@
+﻿<Window x:Class="WpfApp7.LogIn.RegWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp7.LogIn"
+        mc:Ignorable="d"
+        Title="RegWindow" Height="550" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <SolidColorBrush Color="#FF110203"/>
+    </Window.Background>
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="#D2B48C" />
+            <Setter Property="Background" Value="#654321" />
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#D2B48C"/>
+            <Setter Property="Background" Value="#FFF"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="27"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="#654321"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="#D2B48C" />
+            <Setter Property="Background" Value="#654321" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Label Content="Регистрация" HorizontalAlignment="Center" Height="150"></Label>
+        <TextBox x:Name="LoginBox" Grid.Row="0" Text="{Binding Login_User}" HorizontalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" PreviewTextInput="LoginBox_PreviewTextInput"></TextBox>
+        <Label Content="Логин: " Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Content="Хороший пароль" Foreground="Green" Grid.Row="1" HorizontalAlignment="Center" Name="lblStrongPassword" Margin="0,0,0,70"/>
+        <Label Content="Слабый пароль" Foreground="Red" Grid.Row="1" HorizontalAlignment="Center" Name="lblWeakPassword" Margin="0,0,0,70"/>
+        <Label Content="Нормальный пароль" Foreground="Yellow" Grid.Row="1" HorizontalAlignment="Center" Name="lblNormalPassword" Margin="0,0,0,70"/>
+        <TextBox x:Name="PswdBox" Grid.Row="1" Text="{Binding Password_User}" Height="30" Width="200" Visibility="Hidden" VerticalContentAlignment="Center" TextChanged="Pswd_TextChanged"/>
+        <PasswordBox x:Name="Password" Grid.Row="1" Height="30" Width="200" VerticalContentAlignment="Center" PasswordChanged="Password_PasswordChanged"></PasswordBox>
+        <Label Content="Пароль: " Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+        <CheckBox x:Name="checkPas" Grid.Row="1" Content="Показать пароль" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="checkPas_Click" Foreground="#D2B48C" Margin="0,0,10,10"></CheckBox>
+        <Label Content="Имя: " Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+        <TextBox x:Name="NameUs" Grid.Row="2" Text="{Binding Name}" HorizontalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" PreviewTextInput="NameUs_PreviewTextInput"></TextBox>
+        <Label Content="Фамилия: " Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+        <TextBox x:Name="SurUser" Grid.Row="3" Text="{Binding Surname}" HorizontalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" PreviewTextInput="SurUser_PreviewTextInput"></TextBox>
+        <Label Content="Отчество" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+        <TextBox x:Name="PatUs" Grid.Row="4" Text="{Binding Patronymic}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" PreviewTextInput="PatUs_PreviewTextInput"></TextBox>
+        <Button Content="Зарегистрироваться" Grid.Row="5" Height="30" Width="200" Click="Button_Click" Name="buttonReg"/>
+        <Button Content="Отмена" Grid.Row="5" Height="30" Width="200" VerticalAlignment="Bottom" x:Name="ExitBtn" Click="ExitBtn_Click"/>
+    </Grid>
+</Window>

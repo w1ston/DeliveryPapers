@@ -1,0 +1,94 @@
+﻿<Window x:Class="WpfApp7.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp7"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000" MaxWidth="1200" MaxHeight="600"
+        MinHeight="600" MinWidth="1450" Background="#FF110203" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+    <Window.Resources>
+        <ControlTemplate x:Key="TopMenuButtons" TargetType="Button">
+            <Grid x:Name="Btn" Height="40" Margin="20, 0, 0, 0">
+                <Border>
+                    <Grid>
+                        <Label Content="{TemplateBinding Content}"
+                               Background="Transparent" FontSize="23"
+                               VerticalAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Setter Property="Foreground" Value="#FF9D9999"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=IsMouseOver,ElementName=Btn}" Value="True">
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}, Path = IsPressed}" Value="True">
+                                            <Setter Property="Foreground" Value="#FF9D9999"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}, Path = IsFocused}" Value="True">
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                        <Label Content="{TemplateBinding Content}" Background="Transparent" Margin="-3,0,0,0"
+                           VerticalAlignment="Center" FontSize="23" FontWeight="Bold">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Visibility" Value="Hidden"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}, Path = IsFocused}" Value="True">
+                                            <DataTrigger.Setters>
+                                                <Setter Property="Effect">
+                                                    <Setter.Value>
+                                                        <BlurEffect Radius="25"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger.Setters>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+
+                        </Label>
+                    </Grid>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}, Path = IsPressed}" Value="True">
+                                    <Setter Property="Margin" Value="0,2,0,0"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                </Border>
+            </Grid>
+        </ControlTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="101*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="TopMenu" Grid.Row="0" Grid.ColumnSpan="2">
+            <Border BorderThickness="1" BorderBrush="#FF303031" Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="StudList" Template="{StaticResource ResourceKey=TopMenuButtons}" Content="Список студентов" Click="StudList_Click"/>
+                    <Button x:Name="DiscipList" Template="{StaticResource ResourceKey=TopMenuButtons}" Content="Список дисциплин" Click="DiscipList_Click"/>
+                    <Button x:Name="ThemList" Template="{StaticResource ResourceKey=TopMenuButtons}" Content="Список тем курсовых" Click="ThemList_Click"/>
+                    <Button x:Name="ChoiceTheme" Template="{StaticResource ResourceKey=TopMenuButtons}" Content="Выбор темы" Click="ChoiceTheme_Click"/>
+                    <Button x:Name="ListSt" Template="{StaticResource ResourceKey=TopMenuButtons}" Content="Ведомость" Click="ListSt_Click"/>
+                    <Button x:Name="regTeach" Template="{StaticResource ResourceKey=TopMenuButtons}" Content="Новый преподаватель" Click="RegTeach_OnClick"/>
+                    <Button Template="{StaticResource ResourceKey=TopMenuButtons}" x:Name="Mini" Content="-" Click="MiniMized_Click" HorizontalContentAlignment="Center"/>
+                    <Button Template="{StaticResource ResourceKey=TopMenuButtons}" x:Name="Closing" Content="X" Click="Closing_Click" HorizontalContentAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Frame x:Name="PagesFrame" Grid.Row="1" Grid.Column="0" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

@@ -1,0 +1,53 @@
+﻿<Page x:Class="WpfApp7.ListFold.ListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp7.ListFold"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1000"
+      Title="ListPage" Background="white" Name="Pages" IsVisibleChanged="Page_IsVisiblePage">
+    
+    <Page.Resources>
+        <local:WorkSubmitionDateConverter x:Key="WorkSubmitionDateConverter"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="119*"/>
+            <RowDefinition Height="17*"/>
+        </Grid.RowDefinitions>
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="DataGridList" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Students.St_Name}" Header="Имя студента" MinWidth="100" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Students.St_Surname}" Header="Фамилия студента" MinWidth="100" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Students.St_Patronymic}" Header="Отчество студента" MinWidth="100" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Theme.Name_Theme}" Header="Название темы" MinWidth="130" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Students.Groups.Name_Group}" Header="Группа" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Theme.Discipline.Name_Discipline}" Header="Дисциплина" MinWidth="100" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Semester.ID_Semester}" Header="Семместр" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Readiness_Degree, StringFormat= {}{0}%}" Header="Процент выполнения" MinWidth="100" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Grade}" Header="Оценка" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Work_submition_date, StringFormat={}{0:dd.MM.yyyy}, TargetNullValue='', Converter={StaticResource WorkSubmitionDateConverter}}" Header="Дата сдачи" MinWidth="100" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Width="auto" Content="Определить процент работы" x:Name="Readness" Height="30" Margin="0 0 10 0" Click="Readness_Click"/>
+            <Button Width="150" Content="Удалить" x:Name="DelList" Height="30" Margin="0 0 10 0" Click="DelList_Click"/>
+            <Button Width="150" Content="Добавить / Изменить" x:Name="AddList" Height="30" Margin="0 0 10 0" Click="AddList_Click"/>
+            <Button Width="150" Content="Семестр" x:Name="SemBtn" Height="30" Click="SemBtn_Click" Margin="0 0 10 0"/>
+            <Button Width="150" Content="Успевающие студенты" x:Name="StudInSem" Height="30" Click="StudInSemBtn_Click" Margin="0 0 10 0"/>
+            <Button Width="150" Content="Создать документ" x:Name="DocX" Height="30" Click="DocXBtn_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="150" Content="Поиск" x:Name="SearchList" Height="30" Margin="0 0 100 0" Click="SearchList_Click"/>
+            <Label Content="Группа" Height="25"/>
+            <ComboBox Width="150" Height="20" VerticalAlignment="Center" Margin="0 0 10 0" DisplayMemberPath="Name_Group" Name="ComboGroup" SelectionChanged="ComboGroup_SelectionChanged"/>
+            <Label Content="Дисциплина" Height="25"/>
+            <ComboBox Width="150" Height="20" VerticalAlignment="Center" Margin="0 0 10 0" DisplayMemberPath="Name_Discipline" Name="ComboDiscip" SelectionChanged="ComboDiscip_SelectionChanged"/>
+        </StackPanel>
+    </Grid>
+    
+    
+</Page>

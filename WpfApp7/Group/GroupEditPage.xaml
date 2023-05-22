@@ -1,0 +1,34 @@
+﻿<Page x:Class="WpfApp7.Group.GroupEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp7.Student"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GroupEditPage" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800" Background="White" IsVisibleChanged="Page_IsVisiblePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="119*"/>
+            <RowDefinition Height="17*"/>
+        </Grid.RowDefinitions>
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="DataGridGroups" Margin="95,33,104,36" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name_Group}" Header="Название группы" MinWidth="130" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Specialties.Name_Specialties}" Header="Специальность" MinWidth="100" Width="*" x:Name="SpecialG"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Width="150" Content="Добавить" x:Name="AddGroup" Height="30" Click="AddGroup_Click" Margin="0 0 10 0"/>
+            <Button Content="Изменить" x:Name="EditGroup" Height="30" Width="150" Click="EditGroup_Click" Margin="0 0 10 0"/>
+            <Button Width="150" Content="Удалить" x:Name="DelGroup" Height="30" Click="DelGroup_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Grid.Row="0" Width="150" Content="Поиск" x:Name="SearchGroup" Height="30" Click="SearchGroup_Click" Margin="0 0 10 0"/>
+            <Button Grid.Row="0" Width="150" Content="Вернуться назад" x:Name="Back" Height="30" Click="Back_Click" Margin="0 0 10 0"/>
+            <Button Grid.Row="0" Width="200" Content="Перейти к списку специальностей" x:Name="GoSpec" Height="30" Click="GoSpec_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
